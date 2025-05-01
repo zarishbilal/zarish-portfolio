@@ -243,7 +243,7 @@ const AboutSection = () => {
             <li>
               Software Development Methodologies:
               <ul className="ml-6 list-disc">
-                <li>Agile & Scrum</li>
+                <li>Agile &amp; Scrum</li>
               </ul>
             </li>
 
@@ -275,7 +275,7 @@ const AboutSection = () => {
             </li>
             <li style={styles.educationItem}>
               <span style={{ position: "absolute", left: 0, top: 0 }}>·</span>
-              O'LEVELS & A'LEVELS FROM LAHORE GRAMMAR SCHOOL
+              O&apos;LEVELS &amp; A&apos;LEVELS FROM LAHORE GRAMMAR SCHOOL
             </li>
           </ul>
         </motion.div>
