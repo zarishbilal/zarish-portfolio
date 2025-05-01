@@ -1,8 +1,23 @@
 "use client";
 import { useRef, useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 const AboutSection = () => {
+  const { ref, inView } = useInView({
+    triggerOnce: false,
+    threshold: 0.2,
+  });
+
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1, 0]);
+
   const sectionRef = useRef(null);
   const [isInView, setIsInView] = useState(false);
   const [animationStarted, setAnimationStarted] = useState(false);
@@ -47,6 +62,18 @@ const AboutSection = () => {
       }
     };
   }, [animationStarted]);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+
+    const currentRef = containerRef.current;
+    return () => {
+      // Cleanup using the copied ref
+      if (currentRef) {
+        // Any cleanup needed
+      }
+    };
+  }, []);
 
   // Styles object
   const styles = {
@@ -152,133 +179,99 @@ const AboutSection = () => {
   };
 
   return (
-    <div style={styles.aboutSection} ref={sectionRef}>
-      <motion.div
-        style={styles.aboutTitle}
-        animate={
-          titleMoveStarted
-            ? {
-                left: "25%",
-                top: "50%",
-                transform: "translate(-50%, -50%)",
-              }
-            : {}
-        }
-        transition={{ duration: 1.5, ease: "easeInOut" }} // Slower, smoother transition
-      >
-        <motion.span
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ duration: 0.8, delay: isInView ? 0.2 : 0 }}
-          style={styles.titleWord}
-        >
-          A B O U T
-        </motion.span>
-        <motion.span
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ duration: 0.8, delay: isInView ? 1 : 0 }}
-          style={styles.titleWord}
-        >
-          M E
-        </motion.span>
-      </motion.div>
-
-      <div style={styles.rectanglesContainer}>
+    <motion.div
+      ref={containerRef}
+      className="relative min-h-screen bg-black text-white py-16"
+      style={{ opacity }}
+    >
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          style={{
-            ...styles.rectangle,
-            ...styles.introRectangle,
-          }}
-          initial={{ opacity: 0, y: -50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -50 }}
-          transition={{ duration: 0.8, delay: isInView ? 1.8 : 0 }}
+          ref={ref}
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.6 }}
         >
-          <p style={styles.rectangleContent}>
-            A tech enthusiast, student of Software Development, ready to take on
-            new challenges. Intellectual curiosity and desire to learn new
-            technologies driven to overcome obstacles and thrive in diverse
-            environments.
+          <h2
+            className="text-5xl font-bold mb-4"
+            style={{ fontFamily: '"Julius Sans One", sans-serif' }}
+          >
+            About Me
+          </h2>
+          <p className="text-xl text-gray-300">
+            Let&apos;s build something amazing together
           </p>
         </motion.div>
 
-        {/* This is an empty div that creates space for the title */}
-        <div style={styles.titleArea}></div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          {/* Left Column - Skills */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="space-y-8"
+          >
+            <h3 className="text-3xl font-semibold mb-6">Technical Skills</h3>
+            <div className="space-y-4">
+              {[
+                { name: "Frontend Development", level: 90 },
+                { name: "Backend Development", level: 85 },
+                { name: "Database Management", level: 80 },
+                { name: "UI/UX Design", level: 75 },
+              ].map((skill, index) => (
+                <div key={skill.name} className="space-y-2">
+                  <div className="flex justify-between">
+                    <span>{skill.name}</span>
+                    <span>{skill.level}%</span>
+                  </div>
+                  <div className="h-2 bg-gray-700 rounded-full overflow-hidden">
+                    <motion.div
+                      className="h-full bg-[#701925]"
+                      initial={{ width: 0 }}
+                      animate={
+                        inView ? { width: `${skill.level}%` } : { width: 0 }
+                      }
+                      transition={{ duration: 1, delay: 0.3 + index * 0.1 }}
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
 
-        <motion.div
-          style={{
-            ...styles.rectangle,
-            ...styles.skillsRectangle,
-          }}
-          initial={{ opacity: 0, x: 50 }}
-          animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
-          transition={{ duration: 0.8, delay: isInView ? 2.2 : 0 }}
-        >
-          <h2 style={styles.rectangleTitle}>S K I L L S</h2>
-          <ul style={styles.skillsList}>
-            <li>UI UX</li>
-            <li>Web Apps and Mobile Apps</li>
-
-            <li>
-              Programming Languages:
-              <ul className="ml-6 list-disc">
-                <li>C# , React , Python , JavaScript</li>
-              </ul>
-            </li>
-
-            <li>
-              Database:
-              <ul className="ml-6 list-disc">
-                <li>SQL , NoSQL</li>
-              </ul>
-            </li>
-
-            <li>
-              Version Control:
-              <ul className="ml-6 list-disc">
-                <li>Git</li>
-              </ul>
-            </li>
-
-            <li>
-              Software Development Methodologies:
-              <ul className="ml-6 list-disc">
-                <li>Agile & Scrum</li>
-              </ul>
-            </li>
-
-            <li>
-              Frameworks:
-              <ul className="ml-6 list-disc">
-                <li>MAUI , .NET</li>
-              </ul>
-            </li>
-
-            <li>App Development</li>
-          </ul>
-        </motion.div>
-
-        <motion.div
-          style={{
-            ...styles.rectangle,
-            ...styles.educationRectangle,
-          }}
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          transition={{ duration: 0.8, delay: isInView ? 2.6 : 0 }}
-        >
-          <h2 style={styles.rectangleTitle}>E D U C A T I O N</h2>
-          <ul style={styles.educationList}>
-            <li style={styles.educationItem}>
-              <span style={{ position: "absolute", left: 0, top: 0 }}>·</span>
-              SOFTWARE DEVELOPMENT DIPLOMA FROM SAIT
-            </li>
-            <li style={styles.educationItem}>
-              <span style={{ position: "absolute", left: 0, top: 0 }}>·</span>
-              O'LEVELS & A'LEVELS FROM LAHORE GRAMMAR SCHOOL
-            </li>
-          </ul>
-        </motion.div>
+          {/* Right Column - Description */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="space-y-6"
+          >
+            <h3 className="text-3xl font-semibold mb-6">Who I Am</h3>
+            <p className="text-gray-300 leading-relaxed">
+              I&apos;m a passionate Full Stack Developer with a keen eye for
+              detail and a drive for creating exceptional web experiences. With
+              expertise in both frontend and backend technologies, I bring ideas
+              to life through clean, efficient code and intuitive user
+              interfaces.
+            </p>
+            <div className="grid grid-cols-2 gap-4 mt-8">
+              {[
+                { label: "Experience", value: "3+ Years" },
+                { label: "Projects", value: "50+" },
+                { label: "Clients", value: "20+" },
+                { label: "Countries", value: "5+" },
+              ].map((stat) => (
+                <div
+                  key={stat.label}
+                  className="bg-[#701925]/20 p-4 rounded-lg text-center"
+                >
+                  <div className="text-2xl font-bold">{stat.value}</div>
+                  <div className="text-sm text-gray-400">{stat.label}</div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
       </div>
 
       {/* Responsive styles */}
@@ -332,7 +325,7 @@ const AboutSection = () => {
           }
         }
       `}</style>
-    </div>
+    </motion.div>
   );
 };
 

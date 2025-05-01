@@ -79,7 +79,7 @@ export default function ContactSection() {
           className="text-5xl font-bold mb-12 text-center"
           style={{ fontFamily: '"Julius Sans One", sans-serif' }}
         >
-          Let's Connect
+          Let&apos;s Connect
         </motion.h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
