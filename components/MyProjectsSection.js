@@ -15,7 +15,7 @@ import Cube from "./Cube";
 import { useInView } from "react-intersection-observer";
 
 export default function IntroSection() {
-const helloText = "Hello"; const nameText = "I'm Zarish"; const [helloDirections, setHelloDirections] = useState([]); const [nameDirections, setNameDirections] = useState([]); const [hasAnimated, setHasAnimated] = useState(false);
+const helloText = "Hello"; const nameText = "I&apos;m Zarish"; const [helloDirections, setHelloDirections] = useState([]); const [nameDirections, setNameDirections] = useState([]); const [hasAnimated, setHasAnimated] = useState(false);
 
 const { ref, inView } = useInView({ triggerOnce: false, threshold: 0.3 });
 

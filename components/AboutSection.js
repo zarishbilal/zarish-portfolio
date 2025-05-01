@@ -25,40 +25,37 @@ const AboutSection = () => {
 
   // Set up intersection observer to detect when section is in view
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const [entry] = entries;
-        // When section comes into view
-        if (entry.isIntersecting) {
-          setIsInView(true);
-          // Start animation sequence
-          if (!animationStarted) {
-            setAnimationStarted(true);
+    let observer;
+    const currentRef = containerRef.current;
 
-            // Schedule title movement after initial animations
-            const timer = setTimeout(() => {
-              setTitleMoveStarted(true);
-            }, 1700); // Delay before title moves
-
-            return () => clearTimeout(timer);
+    if (currentRef) {
+      observer = new IntersectionObserver(
+        (entries) => {
+          const [entry] = entries;
+          if (entry.isIntersecting) {
+            setIsInView(true);
+            if (!animationStarted) {
+              setAnimationStarted(true);
+              const timer = setTimeout(() => {
+                setTitleMoveStarted(true);
+              }, 1700);
+              return () => clearTimeout(timer);
+            }
+          } else {
+            setIsInView(false);
+            setAnimationStarted(false);
+            setTitleMoveStarted(false);
           }
-        } else {
-          // Reset animations when section is out of view
-          setIsInView(false);
-          setAnimationStarted(false);
-          setTitleMoveStarted(false);
-        }
-      },
-      { threshold: 0.2 } // Trigger when 20% of section is visible
-    );
+        },
+        { threshold: 0.2 }
+      );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+      if (currentRef && observer) {
+        observer.unobserve(currentRef);
       }
     };
   }, [animationStarted]);
