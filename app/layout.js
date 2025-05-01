@@ -1,5 +1,19 @@
 import { Geist, Geist_Mono } from "next/font/google";
+import { Josefin_Slab, Julius_Sans_One } from "next/font/google";
 import "./globals.css";
+
+// Load the fonts
+const josefin = Josefin_Slab({
+  subsets: ["latin"],
+  weight: ["400"], // you can add more weights if needed
+  variable: "--font-josefin",
+});
+
+const julius = Julius_Sans_One({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-julius",
+});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -20,7 +34,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${josefin.variable} ${julius.variable} antialiased`}
       >
         {children}
       </body>
