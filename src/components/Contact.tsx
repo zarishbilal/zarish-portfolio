@@ -25,9 +25,30 @@ const Contact = () => {
   }, []);
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!formRef.current) return;
+    // e.preventDefault();
+    // if (!formRef.current) return;
+ e.preventDefault();
+  if (!formRef.current) return;
 
+  // Simple rate limiting using localStorage
+  const now = Date.now();
+  const submissions = JSON.parse(localStorage.getItem("contact_submissions") || "[]");
+
+  // Keep only submissions in the last 60 seconds
+  const recentSubmissions = submissions.filter((timestamp) => now - timestamp < 60000);
+
+  if (recentSubmissions.length >= 3) {
+    toast({
+      title: "Too Many Requests",
+      description: "You can only send 3 messages per minute.",
+      variant: "destructive",
+    });
+    return;
+  }
+
+  // Add the current submission timestamp and save
+  recentSubmissions.push(now);
+  localStorage.setItem("contact_submissions", JSON.stringify(recentSubmissions));
     const envPublicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
     const envServiceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
     const envTemplateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
