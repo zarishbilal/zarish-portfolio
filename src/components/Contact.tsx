@@ -28,9 +28,9 @@ const Contact = () => {
     e.preventDefault();
     if (!formRef.current) return;
 
-    const envPublicKey = import.meta.env.VITE_PUBLIC_EMAILJS_PUBLIC_KEY;
-    const envServiceId = import.meta.env.VITE_PUBLIC_EMAILJS_SERVICE_ID;
-    const envTemplateId = import.meta.env.VITE_PUBLIC_EMAILJS_TEMPLATE_ID;
+    const envPublicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+    const envServiceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const envTemplateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
 
     if (!envPublicKey || !envServiceId || !envTemplateId) {
       toast({
