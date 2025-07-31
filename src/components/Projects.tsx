@@ -10,16 +10,16 @@ const Projects = () => {
       image: "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=800&q=80",
       technologies: ["React", "Node.js", "MongoDB"],
       liveUrl: "https://impac-track.vercel.app/",
-      githubUrl: ""
+      githubUrl: "https://github.com/zarishbilal/impacTrack"
     },
-    {
-      title: "Support Bot",
-      description: "Interactive map application for nature enthusiasts and hikers.",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
-      technologies: ["Python", "AI/ML", "Flask"],
-      liveUrl: "#",
-      githubUrl: "#"
-    },
+    // {
+    //   title: "Support Bot",
+    //   description: "Interactive map application for nature enthusiasts and hikers.",
+    //   image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
+    //   technologies: ["Python", "AI/ML", "Flask"],
+    //   liveUrl: "#",
+    //   githubUrl: "#"
+    // },
     {
       title: "Trek Canada",
       description: "Discover beautiful mountain trails around the world.",
@@ -28,30 +28,30 @@ const Projects = () => {
       liveUrl: "https://trekcanada.vercel.app/",
       githubUrl: "https://github.com/zarishbilal/trekcanada"
     },
-    {
-      title: "E-commerce Store",
-      description: "A modern e-commerce platform with advanced features.",
-      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800&q=80",
-      technologies: ["C#", ".NET", "SQL"],
-      liveUrl: "#",
-      githubUrl: "#"
-    },
+    // {
+    //   title: "E-commerce Store",
+    //   description: "A modern e-commerce platform with advanced features.",
+    //   image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800&q=80",
+    //   technologies: ["C#", ".NET", "SQL"],
+    //   liveUrl: "#",
+    //   githubUrl: "#"
+    // },
     {
       title: "Flight Reservation",
       description: "Comprehensive flight booking and management system.",
       image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=800&q=80",
       technologies: ["C#", "MAUI", "Azure"],
-      liveUrl: "#",
-      githubUrl: "#"
+      liveUrl: "https://github.com/zarishbilal/flight-management-system",
+      githubUrl: "https://github.com/zarishbilal/flight-management-system"
     },
-    {
-      title: "Helping Hands",
-      description: "Connect people who need help with those who can provide it.",
-      image: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=800&q=80",
-      technologies: ["React", "Firebase", "PWA"],
-      liveUrl: "#",
-      githubUrl: "#"
-    }
+    // {
+    //   title: "Helping Hands",
+    //   description: "Connect people who need help with those who can provide it.",
+    //   image: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=800&q=80",
+    //   technologies: ["React", "Firebase", "PWA"],
+    //   liveUrl: "#",
+    //   githubUrl: "#"
+    // }
   ];
 
   return (

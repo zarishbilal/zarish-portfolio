@@ -57,6 +57,7 @@ const Footer = () => {
               </a>
               <a 
                 href="mailto:zarishsuleman@gmail.com" 
+                  
                 className="p-2 bg-secondary rounded-lg hover:bg-primary/20 hover:text-primary transition-colors"
               >
                 <Mail className="h-5 w-5" />

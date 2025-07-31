@@ -9,11 +9,11 @@ const Skills = () => {
     },
     {
       title: "Frontend Development", 
-      skills: ["React", "HTML5", "CSS3", "Tailwind CSS"]
+      skills: ["React","Tailwind CSS"]
     },
     {
       title: "Backend & Database",
-      skills: ["SQL", "NoSQL", "MongoDB", ".NET", "REST APIs"]
+      skills: ["SQL", "NoSQL", "MongoDB", "PostgreSQL", "REST APIs"]
     },
     {
       title: "Development Tools",
