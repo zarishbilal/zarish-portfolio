@@ -37,7 +37,7 @@ const Contact = () => {
   // Keep only submissions in the last 60 seconds
   const recentSubmissions = submissions.filter((timestamp) => now - timestamp < 60000);
 
-  if (recentSubmissions.length >= 3) {
+  if (recentSubmissions.length >= 2) {
     toast({
       title: "Too Many Requests",
       description: "You can only send 3 messages per minute.",
