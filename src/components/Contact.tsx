@@ -1,7 +1,4 @@
-
-
-"use client";
-
+import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -91,7 +88,7 @@ const Contact = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Contact Info - Order 2 on mobile */}
-          <div className="space-y-6 lg:space-y-8 order-2 lg:order-1">
+          <div className="hidden lg:block space-y-6 lg:space-y-8 order-2 lg:order-1">
             <div>
               <h3 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6">Get in Touch</h3>
               <p className="text-muted-foreground mb-6 sm:mb-8 text-sm sm:text-base">
@@ -99,9 +96,17 @@ const Contact = () => {
                 or just having a conversation about technology. Feel free to reach out!
               </p>
             </div>
-
+            
             <div className="space-y-4 sm:space-y-6">
-              <div className="flex items-center gap-3 sm:gap-4">
+               <motion.div
+                initial={{ opacity: 0, y: 32 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 2, ease: [0.22, 1, 0.36, 1] }}
+                viewport={{ once: false, amount: 0.3 }}
+                onAnimationStart={() => console.log("Animation started for Email")}
+                onAnimationComplete={() => console.log("Animation completed for Email")}
+                className="flex items-center gap-3 sm:gap-4"
+              >
                 <div className="p-2 sm:p-3 bg-primary/20 rounded-lg flex-shrink-0">
                   <Mail className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
                 </div>
@@ -114,9 +119,17 @@ const Contact = () => {
                     zarishsuleman@gmail.com
                   </a>
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="flex items-center gap-3 sm:gap-4">
+              <motion.div
+                initial={{ opacity: 0, y: 32 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 2, ease: [0.22, 1, 0.36, 1] }}
+                viewport={{ once: false, amount: 0.3 }}
+                onAnimationStart={() => console.log("Animation started for Phone")}
+                onAnimationComplete={() => console.log("Animation completed for Phone")}
+                className="flex items-center gap-3 sm:gap-4"
+              >
                 <div className="p-2 sm:p-3 bg-primary/20 rounded-lg flex-shrink-0">
                   <Phone className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
                 </div>
@@ -129,9 +142,17 @@ const Contact = () => {
                     825-449-7651
                   </a>
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="flex items-center gap-3 sm:gap-4">
+              <motion.div
+                initial={{ opacity: 0, y: 32 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 2, ease: [0.22, 1, 0.36, 1] }}
+                viewport={{ once: false, amount: 0.3 }}
+                onAnimationStart={() => console.log("Animation started for Location")}
+                onAnimationComplete={() => console.log("Animation completed for Location")}
+                className="flex items-center gap-3 sm:gap-4"
+              >
                 <div className="p-2 sm:p-3 bg-primary/20 rounded-lg flex-shrink-0">
                   <MapPin className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
                 </div>
@@ -139,11 +160,20 @@ const Contact = () => {
                   <h4 className="font-semibold text-sm sm:text-base">Location</h4>
                   <span className="text-muted-foreground text-xs sm:text-sm">Calgary, Alberta, Canada</span>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </div>
 
           {/* Contact Form - Order 1 on mobile */}
+          <motion.div
+             
+              initial={{ opacity: 0, y: 32 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 2.5, ease: [0.22, 1, 0.36, 1] }}
+              viewport={{ once: false, amount: 0.3 }}
+              className="card-shadow hover:glow-effect transition-colors duration-300"
+             
+            >
           <Card className="card-shadow order-1 lg:order-2">
             <CardHeader className="pb-4 sm:pb-6">
               <CardTitle className="text-lg sm:text-xl">Send a Message</CardTitle>
@@ -206,6 +236,7 @@ const Contact = () => {
               </form>
             </CardContent>
           </Card>
+          </motion.div>
         </div>
       </div>
     </section>

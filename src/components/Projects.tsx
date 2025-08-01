@@ -1,7 +1,9 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Github } from "lucide-react";
+import { motion } from "framer-motion";
 import Trek from "@/assets/Trek-Canada.png";
+
 const Projects = () => {
   const projects = [
     {
@@ -12,14 +14,6 @@ const Projects = () => {
       liveUrl: "https://impac-track.vercel.app/",
       githubUrl: "https://github.com/zarishbilal/impacTrack"
     },
-    // {
-    //   title: "Support Bot",
-    //   description: "Interactive map application for nature enthusiasts and hikers.",
-    //   image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
-    //   technologies: ["Python", "AI/ML", "Flask"],
-    //   liveUrl: "#",
-    //   githubUrl: "#"
-    // },
     {
       title: "Trek Canada",
       description: "Discover beautiful mountain trails around the world.",
@@ -28,14 +22,6 @@ const Projects = () => {
       liveUrl: "https://trekcanada.vercel.app/",
       githubUrl: "https://github.com/zarishbilal/trekcanada"
     },
-    // {
-    //   title: "E-commerce Store",
-    //   description: "A modern e-commerce platform with advanced features.",
-    //   image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800&q=80",
-    //   technologies: ["C#", ".NET", "SQL"],
-    //   liveUrl: "#",
-    //   githubUrl: "#"
-    // },
     {
       title: "Flight Reservation",
       description: "Comprehensive flight booking and management system.",
@@ -43,15 +29,7 @@ const Projects = () => {
       technologies: ["C#", "MAUI", "Azure"],
       liveUrl: "https://github.com/zarishbilal/flight-management-system",
       githubUrl: "https://github.com/zarishbilal/flight-management-system"
-    },
-    // {
-    //   title: "Helping Hands",
-    //   description: "Connect people who need help with those who can provide it.",
-    //   image: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=800&q=80",
-    //   technologies: ["React", "Firebase", "PWA"],
-    //   liveUrl: "#",
-    //   githubUrl: "#"
-    // }
+    }
   ];
 
   return (
@@ -60,51 +38,63 @@ const Projects = () => {
         <h2 className="text-4xl font-bold text-center mb-16">
           <span className="gradient-text">Featured Projects</span>
         </h2>
-        
+
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
-            <Card key={index} className="overflow-hidden card-shadow hover:glow-effect transition-all duration-300 group">
-              <div className="relative overflow-hidden">
-                <img 
-                  src={project.image} 
-                  alt={project.title}
-                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
-                  <Button size="sm" className="glow-effect">
-                    <ExternalLink className="h-4 w-4 mr-2" />
-                    Live Demo
-                  </Button>
-                  <Button size="sm" variant="outline">
-                    <Github className="h-4 w-4 mr-2" />
-                    Code
-                  </Button>
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 32 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 2.5, ease: [0.22, 1, 0.36, 1] }}
+              viewport={{ once: false, amount: 0.3 }}
+            >
+              <Card className="overflow-hidden card-shadow hover:glow-effect transition-all duration-300 group">
+                <div className="relative overflow-hidden">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
+                    <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                      <Button size="sm" className="glow-effect">
+                        <ExternalLink className="h-4 w-4 mr-2" />
+                        Live Demo
+                      </Button>
+                    </a>
+                    <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                      <Button size="sm" variant="outline">
+                        <Github className="h-4 w-4 mr-2" />
+                        Code
+                      </Button>
+                    </a>
+                  </div>
                 </div>
-              </div>
-              
-              <CardHeader>
-                <CardTitle className="text-xl">{project.title}</CardTitle>
-                <CardDescription className="text-muted-foreground">
-                  {project.description}
-                </CardDescription>
-              </CardHeader>
-              
-              <CardContent>
-                <div className="flex flex-wrap gap-2">
-                  {project.technologies.map((tech, techIndex) => (
-                    <span 
-                      key={techIndex}
-                      className="text-xs px-2 py-1 bg-primary/20 text-primary rounded-md"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+
+                <CardHeader>
+                  <CardTitle className="text-xl">{project.title}</CardTitle>
+                  <CardDescription className="text-muted-foreground">
+                    {project.description}
+                  </CardDescription>
+                </CardHeader>
+
+                <CardContent>
+                  <div className="flex flex-wrap gap-2">
+                    {project.technologies.map((tech, techIndex) => (
+                      <span
+                        key={techIndex}
+                        className="text-xs px-2 py-1 bg-primary/20 text-primary rounded-md"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
           ))}
         </div>
-        
+
         <div className="text-center mt-12">
           <Button variant="outline" size="lg">
             View More Projects
