@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { GraduationCap, Calendar } from "lucide-react";
 
@@ -30,22 +30,57 @@ const Education = () => {
     },
   ];
 
+  // Define variants with explicit Variants type
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.3, // Delay between each child animation
+      },
+    },
+  };
+
+  // Define child variants with explicit Variants type
+  const childVariants: Variants = {
+    hidden: { opacity: 0, y: 32 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 1, // Match About
+        ease: [0.22, 1, 0.36, 1], // Match About
+      },
+    },
+  };
+
   return (
     <section id="education" className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12 lg:mb-16">
+        <motion.h2
+          className="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12 lg:mb-16"
+          variants={childVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.3 }}
+          onAnimationStart={() => console.log("Animation started for Heading")}
+          onAnimationComplete={() => console.log("Animation completed for Heading")}
+        >
           <span className="gradient-text">Education</span>
-        </h2>
+        </motion.h2>
 
-        <div className="max-w-4xl mx-auto space-y-6 sm:space-y-8">
+        <motion.div
+          className="max-w-4xl mx-auto space-y-6 sm:space-y-8"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.3 }}
+        >
           {education.map((edu, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 32 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 2, ease: [0.22, 1, 0.36, 1] }}
-              viewport={{ once: false, amount: 0.3 }}
               className="card-shadow hover:glow-effect transition-colors duration-300"
+              variants={childVariants}
               onAnimationStart={() => console.log(`Animation started for ${edu.degree}`)}
               onAnimationComplete={() => console.log(`Animation completed for ${edu.degree}`)}
             >
@@ -80,7 +115,7 @@ const Education = () => {
               </Card>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
