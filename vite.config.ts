@@ -9,6 +9,7 @@ export default defineConfig(({ mode }) => ({
     host: "::",
     port: 8080,
   },
+  base: '/zarish-portfolio/', // Add this line - replace with your actual repo name
   plugins: [
     react(),
     mode === 'development' &&
