@@ -152,6 +152,22 @@ import Trek from "@/assets/Trek-Canada.png";
 
 const Projects = () => {
   const projects = [
+       { 
+    title: "Islamic Will",
+description: "A secure and user-friendly platform for creating, storing, and managing Islamic wills in compliance with Shariah principles.",
+image: "https://plus.unsplash.com/premium_photo-1661637857824-e443a2b62fc8?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+technologies: ["Next.js", "TailwindCSS", "React", "Supabase", "Gemini"],
+liveUrl: "https://github.com/zarishbilal/islamic-will",
+githubUrl: "https://github.com/zarishbilal/islamic-will",
+    },
+      {
+      title: "Trek Canada",
+      description: "Explore Canada's National Parks like never before, browse trails on a dynamic map or list, and save your must-hike favorites securely for your next adventure.",
+      image: Trek,
+      technologies: ["React", "Maps API", "CSS3"],
+      liveUrl: "https://trekcanada.vercel.app/",
+      githubUrl: "https://github.com/zarishbilal/trekcanada",
+    },
     {
       title: "ImpacTrack",
       description: "A platform connecting volunteers with community initiatives.",
@@ -160,14 +176,7 @@ const Projects = () => {
       liveUrl: "https://impac-track.vercel.app/",
       githubUrl: "https://github.com/zarishbilal/impacTrack",
     },
-    {
-      title: "Trek Canada",
-      description: "Discover beautiful mountain trails around the world.",
-      image: Trek,
-      technologies: ["React", "Maps API", "CSS3"],
-      liveUrl: "https://trekcanada.vercel.app/",
-      githubUrl: "https://github.com/zarishbilal/trekcanada",
-    },
+  
     {
       title: "Flight Reservation",
       description: "Comprehensive flight booking and management system.",
@@ -175,21 +184,8 @@ const Projects = () => {
       technologies: ["C#", "MAUI", "Azure"],
       liveUrl: "https://github.com/zarishbilal/flight-management-system",
       githubUrl: "https://github.com/zarishbilal/flight-management-system",
-    },{
-      title: "Flight Reservation",
-      description: "Comprehensive flight booking and management system.",
-      image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=800&q=80",
-      technologies: ["C#", "MAUI", "Azure"],
-      liveUrl: "https://github.com/zarishbilal/flight-management-system",
-      githubUrl: "https://github.com/zarishbilal/flight-management-system",
-    },{
-      title: "Flight Reservation",
-      description: "Comprehensive flight booking and management system.",
-      image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=800&q=80",
-      technologies: ["C#", "MAUI", "Azure"],
-      liveUrl: "https://github.com/zarishbilal/flight-management-system",
-      githubUrl: "https://github.com/zarishbilal/flight-management-system",
     },
+ 
   ];
 
   const scrollRef = useRef<HTMLDivElement>(null);
