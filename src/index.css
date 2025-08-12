@@ -83,10 +83,6 @@ All colors MUST be HSL.
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     overflow-x: hidden;
   }
-
-  html {
-    scroll-behavior: smooth;
-  }
 }
 
 @layer components {
@@ -108,6 +104,16 @@ All colors MUST be HSL.
   
   .card-shadow {
     box-shadow: var(--shadow-card);
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    overflow: hidden;
+    word-wrap: break-word;
+    hyphens: auto;
   }
 }
 

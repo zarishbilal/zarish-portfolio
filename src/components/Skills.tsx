@@ -54,7 +54,7 @@ const Skills = () => {
   };
 
   return (
-    <section id="skills" className="py-20 px-4">
+    <section id="skills" className="py-20 px-4 bg-secondary/50">
       <div className="max-w-7xl mx-auto">
         <motion.h2
           className="text-4xl font-bold text-center mb-16"
