@@ -310,9 +310,11 @@ githubUrl: "https://github.com/zarishbilal/islamic-will",
         </motion.div>
 
         <div className="text-center mt-12">
-          <Button variant="outline" size="lg">
-            View More Projects
-          </Button>
+          <a href="https://github.com/zarishbilal" target="_blank" rel="noopener noreferrer">
+            <Button variant="outline" size="lg">
+              View More Projects
+            </Button>
+          </a>
         </div>
       </div>
     </section>
