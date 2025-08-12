@@ -101,7 +101,7 @@ const Contact = () => {
                <motion.div
                 initial={{ opacity: 0, y: 32 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 2, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
                 viewport={{ once: false, amount: 0.3 }}
                 onAnimationStart={() => console.log("Animation started for Email")}
                 onAnimationComplete={() => console.log("Animation completed for Email")}
@@ -124,7 +124,7 @@ const Contact = () => {
               <motion.div
                 initial={{ opacity: 0, y: 32 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 2, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ duration: 0.7, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
                 viewport={{ once: false, amount: 0.3 }}
                 onAnimationStart={() => console.log("Animation started for Phone")}
                 onAnimationComplete={() => console.log("Animation completed for Phone")}
@@ -147,7 +147,7 @@ const Contact = () => {
               <motion.div
                 initial={{ opacity: 0, y: 32 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 2, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ duration: 0.7, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
                 viewport={{ once: false, amount: 0.3 }}
                 onAnimationStart={() => console.log("Animation started for Location")}
                 onAnimationComplete={() => console.log("Animation completed for Location")}
@@ -169,7 +169,7 @@ const Contact = () => {
              
               initial={{ opacity: 0, y: 32 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 2.5, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
               viewport={{ once: false, amount: 0.3 }}
               className="card-shadow hover:glow-effect transition-colors duration-300"
              
